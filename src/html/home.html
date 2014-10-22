@@ -1,0 +1,56 @@
+      <div class="row">
+        <div class="col-md-12 slideshow">
+          <div id="slideshow0">
+            <div class="camera_wrap camera_emboss camera_white_skin" slideshow>
+              <img src="/img/slideshow/sub.jpg" alt="Banner 1" />
+              <div data-thumb="/img/slideshow/sub.jpg" data-src="/img/slideshow/sub.jpg" data-link="/product/lycksele-havet-twoseat-sofabed"></div>
+              <div data-thumb="/img/slideshow/sub1.jpg" data-src="/img/slideshow/sub.jpg" ></div>
+              <div data-thumb="/img/slideshow/sub2.jpg" data-src="/img/slideshow/sub2.jpg" ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 left-menu">
+          <div>
+            <h3><a href="/collections">Collections</a></h3>
+            <ul>
+              <li ng-repeat="collection in collections"><a href="/collection/{{ collection.slug }}">{{ collection.title }}</a></li>
+            </ul>
+          </div>
+          <div class="options">
+            <select ng-options="cur.code as cur.title for cur in currencies" ng-model="currency" ng-change="Page.currencySet(currency)"></select>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-4" ng-repeat="product in products">
+              <div class="product">
+                <div class="product_sale" ng-if="product.on_sale.data.key == 1">Sale</div>
+                <a href="/product/{{ product.slug }}" class="img-cont"><img alt="{{ product.title }}" ng-src="{{ Page.image.resize(product.image, 213, 213) }}"></a>
+                <div class="name">
+                  <a href="/product/{{ product.slug }}">{{ product.title }}</a>
+                </div>
+                <div class="price" ng-if="product.on_sale.data.key == 1">
+                  <p><span class="strike">{{ product.pricing.formatted.with_tax }}</span> <strong>&pound;{{ product.sale_price }}.00</strong></p>
+                </div>
+                <div class="price" ng-if="product.on_sale.data.key != 1">
+                  <p><strong>{{ product.pricing.formatted.with_tax }}</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="newsletter clearfix">
+                <h3>Newsletter</h3>
+                <div>
+                  <input type="text" name="email" class="email">
+                  <input type="submit" value="Subscribe" class="btn btn-primary">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

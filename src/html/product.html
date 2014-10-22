@@ -1,0 +1,72 @@
+      <ul class="breadcrumb prod">
+        <li><a href="/">Home</a> <span class="divider"></span></li>
+        <li ng-if="product.category.parent.data.parent"><a href="/category/{{ product.category.parent.data.parent.data.slug }}">{{ product.category.parent.data.parent.data.title }}</a> <span class="divider"></span></li>
+        <li ng-if="product.category.parent"><a href="/category/{{ product.category.parent.data.slug }}">{{ product.category.parent.data.title }}</a> <span class="divider"></span></li>
+        <li><a href="/category/{{ product.category.slug }}">{{ product.category.title }}</a> <span class="divider"></span></li>
+        <li class="active">{{ product.title }}</li>
+      </ul>
+
+      <div class="row product-info">
+        <div class="col-md-6">
+          <div class="image" image-src="{{ product.image.url.http }}" image-zoom></div>
+          <div class="image-additional">
+            <a ng-repeat="image in product.images" class="cloud-zoom-gallery" ng-click="switchImage(image.url.http)"><img alt="Image" ng-src="{{ Page.image.resize(image, 74, 74) }}" /></a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h1>{{ product.title }}</h1>
+          <div class="line"></div>
+          <ul>
+            <li ng-if="product.brand"><span>Brand:</span> <a href="/brand/{{ product.brand.slug }}">{{ product.brand.title }}</a></li>
+            <li><span>Product Code:</span> {{ product.sku }}</li>
+            <li><span>Availability: </span> {{ product.stock_status.value }}</li>
+            <li ng-if="product.collection"><span>Collection: </span> <a href="/collection/{{ product.collection.data.slug }}">{{ product.collection.data.title }}</a></li>
+            <li ng-if="product.brand"><span>Brand: </span> <a href="/brand/{{ product.brand.data.slug }}">{{ product.brand.data.title }}</a></li>
+          </ul>
+          <div class="price" ng-if="product.on_sale.data.key == 1">
+            Price <span class="strike">{{ product.pricing.formatted.with_tax }}</span> <strong>&pound;{{ product.sale_price }}.00</strong>
+          </div>
+          <div class="price" ng-if="product.on_sale.data.key != 1">
+            Price <strong>{{ product.pricing.formatted.with_tax }}</strong>
+          </div>
+          <div id="modifiers">
+            <select ng-repeat="modifier in modifiers" ng-if="modifier.type.data.key == 'variant'" ng-model="mods[modifier.id]" name="modifier[{{ modifier.id }}]" title="{{ modifier.title }}" ng-mod="{{ modifier.id }}">
+              <option value="0">{{ modifier.title }}</option>
+              <option value="{{ variation.id }}" ng-repeat="variation in modifier.variations">{{ variation.title }}</option>
+            </select>
+          </div>
+          <div class="line"></div>
+          <form class="form-inline product-add">
+            <button ng-id="{{ product.id }}" ng-qty="#qty" ng-mod="#modifiers" class="btn btn-primary" cart-insert>Add to Cart</button>
+            <label>Qty:</label> <input type="text" placeholder="1" id="qty" class="col-md-1" />
+          </form>
+          <div class="tabs">
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#description">Description</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+              {{ product.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="related" ng-if="products">
+      <h3 class="related">Related products</h3>
+      <div class="row">
+        <div class="col-md-3" ng-repeat="product in products">
+          <div class="product">
+            <div class="product_sale" ng-if="product.on_sale.data.key == 1">Sale</div>
+            <a href="/product/{{ product.slug }}" class="img-cont"><img alt="{{ product.title }}" ng-src="{{ Page.image.resize(product.image, 213, 213) }}" /></a>
+            <div class="name">
+              <a href="/product/{{ product.slug }}">{{ product.title }}</a>
+            </div>
+            <div class="price">
+              <p>{{ product.pricing.formatted.with_tax }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

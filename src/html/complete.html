@@ -1,0 +1,85 @@
+      <div class="row">
+        <div class="col-md-12">
+          <div class="breadcrumbs">
+            <ul class="breadcrumb">
+              <li><a href="/">Home</a> <span class="divider"></span></li>
+              <li><a href="/">Shopping Cart</a> <span class="divider"></span></li>
+              <li><a href="/">Checkout</a> <span class="divider"></span></li>
+              <li><a href="/">Payment</a> <span class="divider"></span></li>
+              <li class="active">{{ title }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h2>{{ title }}</h2>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 20px">
+        <div class="col-md-6">
+          <div class="loginbox">
+            <p>Billing Address</p>
+            <ul>
+              <li>{{ payment.order.bill_to.data.first_name }} {{ payment.order.bill_to.data.last_name }}</li>
+              <li ng-if="payment.order.bill_to.data.company">{{ payment.order.bill_to.data.company }}</li>
+              <li>{{ payment.order.bill_to.data.address_1 }}</li>
+              <li>{{ payment.order.bill_to.data.address_2 }}</li>
+              <li>{{ payment.order.bill_to.data.county }}</li>
+              <li>{{ payment.order.bill_to.data.postcode }}</li>
+              <li>{{ payment.order.bill_to.data.country.value }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="loginbox">
+            <p>Shipping Address</p>
+            <ul>
+              <li>{{ payment.order.ship_to.data.first_name }} {{ payment.order.ship_to.data.last_name }}</li>
+              <li ng-if="payment.order.ship_to.data.company">{{ payment.order.ship_to.data.company }}</li>
+              <li>{{ payment.order.ship_to.data.address_1 }}</li>
+              <li>{{ payment.order.ship_to.data.address_2 }}</li>
+              <li>{{ payment.order.ship_to.data.county }}</li>
+              <li>{{ payment.order.ship_to.data.postcode }}</li>
+              <li>{{ payment.order.ship_to.data.country.value }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="your_order">
+            <table class="table table-bordered table-responsive">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Qty</th>
+                  <th>Totals</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr class="subtotal">
+                  <td></td>
+                  <td><b>Cart Subtotal</b></td>
+                  <td>{{ cart.totals.formatted.without_tax }}</td>
+                </tr>
+                <tr class="subtotal">
+                  <td></td>
+                  <td><b>Order Total</b></td>
+                  <td>{{ cart.totals.formatted.with_tax }}</td>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr ng-repeat="(key,product) in cart.contents">
+                  <td><a href="/product/{{ product.slug }}">{{ product.title }}</a></td>
+                  <td>{{ product.quantity }}</td>
+                  <td>{{ product.totals.formatted.with_tax }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>

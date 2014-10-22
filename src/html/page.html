@@ -1,0 +1,39 @@
+      <div class="row">
+        <div class="col-md-12">
+          <div class="breadcrumbs">
+            <ul class="breadcrumb">
+              <li><a href="/">Home</a> <span class="divider"></span></li>
+              <li class="active">{{ content.title }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="cat_header">
+            <h2>{{ content.title }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row page-content">
+        <div class="col-md-3 left-menu">
+          <div>
+            <h3>Pages</h3>
+            <ul>
+              <li ng-repeat="page in pages" ng-if="page.sidebar.data.key == '1'"><a href="/{{ page.slug }}">{{ page.title }}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row registerbox">
+            <div class="col-md-9">
+              <p class="text_about" ng-bind-html="content.intro"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9" ng-bind-html="content.contents"></div>
+          </div>
+        </div>
+      </div>

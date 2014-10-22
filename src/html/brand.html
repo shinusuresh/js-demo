@@ -1,0 +1,51 @@
+      <div class="row">
+        <div class="col-md-12">
+          <div class="breadcrumbs">
+            <ul class="breadcrumb">
+              <li><a href="/">Home</a> <span class="divider"></span></li>
+              <li class="active">{{ brand.title }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="cat_header">
+            <h2>{{ brand.title }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row box collection">
+        <div class="col-md-7">
+          <p>{{ brand.description }}</p>
+        </div>
+        <div class="col-md-5">
+          <img alt="{{ brand.title }}" ng-src="{{ brand.image.url.http }}" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3" ng-repeat="product in products">
+          <div class="product">
+            <div class="product_sale" ng-if="product.on_sale.data.key == 1">Sale</div>
+            <a href="/product/{{ product.slug }}" class="img-cont"><img alt="{{ product.title }}" ng-src="{{ Page.image.resize(product.image, 213, 213) }}" /></a>
+            <div class="name">
+              <a href="/product/{{ product.slug }}">{{ product.title }}</a>
+            </div>
+            <div class="price" ng-if="product.on_sale.data.key == 1">
+              <p><span class="strike">{{ product.pricing.formatted.with_tax }}</span> &pound;{{ product.sale_price }}.00</p>
+            </div>
+            <div class="price" ng-if="product.on_sale.data.key != 1">
+              <p>{{ product.pricing.formatted.with_tax }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <pagination total-items="pagination.total" items-per-page="pagination.limit" page="pageCurrent" class="pagination pull-right" previous-text="&lsaquo;" next-text="&rsaquo;"></pagination>
+        </div>
+      </div>
