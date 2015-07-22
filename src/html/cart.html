@@ -40,7 +40,7 @@
                     <input type="image" title="Update" alt="Update" src="/img/update.png" ng-id="{{ key }}" ng-qty="#c_{{ key }}" cart-qty />
                     <input type="image" title="Remove" alt="Remove" src="/img/remove.png" ng-id="{{ key }}" ng-qty="0" cart-qty />
                   </td>
-                  <td class="total">{{ product.totals.formatted.with_tax }}</td>
+                  <td class="total">{{ product.totals.pre_discount.formatted.with_tax }}</td>
                 </tr>
               </tbody>
             </table>
@@ -63,7 +63,7 @@
             <table class="table">
               <tr>
                 <th>Cart Subtotal</th>
-                <td>{{ cart.totals.formatted.without_tax }}</td>
+                <td>{{ cart.totals.pre_discount.formatted.without_tax }}</td>
               </tr>
               <tr>
                 <th>Shipping</th>
@@ -71,7 +71,7 @@
               </tr>
               <tr>
                 <th><span>Order Total</span></th>
-                <td>{{ cart.totals.formatted.with_tax }}</td>
+                <td>{{ cart.totals.pre_discount.formatted.with_tax }}</td>
               </tr>					
             </table>
             <p>
