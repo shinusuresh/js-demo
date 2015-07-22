@@ -2,9 +2,9 @@ var app;
 
 app = angular.module('store', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'templates-main', 'ImageZoom']);
 
-app.value('siteName', 'YOUR_STORE');
+app.value('siteName', 'Molkea');
 
-app.value('publicKey', 'YOUR_PUBLIC_KEY');
+app.value('publicKey', 'umRG34nxZVGIuCSPfYf8biBSvtABgTR8GMUtflyE');
 
 app.config([
   '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

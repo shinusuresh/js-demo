@@ -6,8 +6,8 @@
 app = angular.module 'store', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'templates-main', 'ImageZoom']
 
 # Config
-app.value 'siteName', 'YOUR_STORE'
-app.value 'publicKey', 'YOUR_PUBLIC_KEY'
+app.value 'siteName', 'Molkea'
+app.value 'publicKey', 'umRG34nxZVGIuCSPfYf8biBSvtABgTR8GMUtflyE'
 
 # Set routes & page definitions
 app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
