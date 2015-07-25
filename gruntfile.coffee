@@ -66,10 +66,7 @@ module.exports = (grunt) ->
         files:
           'dist/css/store.min.css': ['src/css/*.css']
 
-	# Server
-	#server:
-	 # options:
-		#  port: 9000
+	
 		  
     # Watch Config
     watch:
@@ -91,4 +88,4 @@ module.exports = (grunt) ->
 
   # Default task
   grunt.registerTask 'default', ['coffee', 'html2js', 'concat', 'uglify', 'cssmin']
-  grunt.registerTask 'serve', ['watch']
+  
