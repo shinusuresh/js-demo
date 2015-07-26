@@ -2,7 +2,7 @@
 //  OpenShift sample Node application
 var express = require('express');
 var fs      = require('fs');
-
+var app = express();
 
 /**
  *  Define the sample application.
@@ -148,7 +148,7 @@ var SampleApp = function() {
 
 };   /*  Sample Application.  */
 
-
+app.use(express.static(__dirname + '/public'));
 
 /**
  *  main():  Main code.
@@ -156,4 +156,5 @@ var SampleApp = function() {
 var zapp = new SampleApp();
 zapp.initialize();
 zapp.start();
+
 
