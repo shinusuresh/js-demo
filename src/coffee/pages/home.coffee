@@ -6,6 +6,7 @@ app.controller 'homeController', ['$scope', '$route', 'Moltin', 'Page', ($scope,
 
 	# Page options
 	Page.titleSet 'Home'
+	Page.analytics.process()
 	Page.loader.set 3
 
 	# Get featured products

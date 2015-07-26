@@ -8,6 +8,7 @@ app = angular.module 'store', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'templat
 # Config
 app.value 'siteName', 'Molkea'
 app.value 'publicKey', 'umRG34nxZVGIuCSPfYf8biBSvtABgTR8GMUtflyE'
+app.value 'analyticsHost', 'http://analytics-thoughtservice.rhcloud.com:8080/'
 
 # Set routes & page definitions
 app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
@@ -184,7 +185,18 @@ app.factory 'Page', ['$rootScope', '$location', 'Moltin', 'siteName', ($rootScop
 				$rootScope.cache.product[product.slug] = product
 
 				return product
-
+		
+		analytics: 
+			
+			process: () ->
+				switch $rootScope.title 
+					when "Home" 
+						console.info 'Home activated'
+					when "Collections"
+						console.info 'Product activated'
+					else
+						console.info 'No known type in page list'
+				
 	}
 ]
 
@@ -621,6 +633,7 @@ app.controller 'homeController', ['$scope', '$route', 'Moltin', 'Page', ($scope,
 
 	# Page options
 	Page.titleSet 'Home'
+	Page.analytics.process()
 	Page.loader.set 3
 
 	# Get featured products
@@ -732,6 +745,7 @@ app.controller 'productController', ['$rootScope', '$scope', '$routeParams', 'Mo
 
 		# Page options
 		Page.titleSet product.title
+		Page.analytics.process()
 
 		# Assign data
 		if typeof product.image == 'undefined'

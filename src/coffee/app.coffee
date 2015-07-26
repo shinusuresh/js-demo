@@ -8,6 +8,7 @@ app = angular.module 'store', ['ngRoute', 'ngSanitize', 'ui.bootstrap', 'templat
 # Config
 app.value 'siteName', 'Molkea'
 app.value 'publicKey', 'umRG34nxZVGIuCSPfYf8biBSvtABgTR8GMUtflyE'
+app.value 'analyticsHost', 'http://analytics-thoughtservice.rhcloud.com:8080/'
 
 # Set routes & page definitions
 app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->

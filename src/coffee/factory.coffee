@@ -111,6 +111,17 @@ app.factory 'Page', ['$rootScope', '$location', 'Moltin', 'siteName', ($rootScop
 				$rootScope.cache.product[product.slug] = product
 
 				return product
-
+		
+		analytics: 
+			
+			process: () ->
+				switch $rootScope.title 
+					when "Home" 
+						console.info 'Home activated'
+					when "Collections"
+						console.info 'Product activated'
+					else
+						console.info 'No known type in page list'
+				
 	}
 ]

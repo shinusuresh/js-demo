@@ -18,6 +18,7 @@ app.controller 'productController', ['$rootScope', '$scope', '$routeParams', 'Mo
 
 		# Page options
 		Page.titleSet product.title
+		Page.analytics.process()
 
 		# Assign data
 		if typeof product.image == 'undefined'

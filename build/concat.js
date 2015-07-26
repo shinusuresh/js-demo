@@ -367,6 +367,8 @@ app.value('siteName', 'Molkea');
 
 app.value('publicKey', 'umRG34nxZVGIuCSPfYf8biBSvtABgTR8GMUtflyE');
 
+app.value('analyticsHost', 'http://analytics-thoughtservice.rhcloud.com:8080/');
+
 app.config([
   '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -557,6 +559,18 @@ app.factory('Page', [
           };
           $rootScope.cache.product[product.slug] = product;
           return product;
+        }
+      },
+      analytics: {
+        process: function() {
+          switch ($rootScope.title) {
+            case "Home":
+              return console.info('Home activated');
+            case "Collections":
+              return console.info('Product activated');
+            default:
+              return console.info('No known type in page list');
+          }
         }
       }
     };
@@ -927,6 +941,7 @@ app.controller('errorController', [
 app.controller('homeController', [
   '$scope', '$route', 'Moltin', 'Page', function($scope, $route, Moltin, Page) {
     Page.titleSet('Home');
+    Page.analytics.process();
     Page.loader.set(3);
     Moltin.Product.Search({
       featured: 1,
@@ -1020,6 +1035,7 @@ app.controller('productController', [
       var k, v, _ref;
       console.log(product);
       Page.titleSet(product.title);
+      Page.analytics.process();
       if (typeof product.image === 'undefined') {
         $scope.product = Page.format.product(product);
         Page.loader.update();
