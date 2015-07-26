@@ -8,8 +8,7 @@
   },
   "devDependencies": {
     "connect": "^3.4.0",
-    "express": "~4.0.0",
-    "morgan": "~1.0.0",
+    "express": "~3.4.4",
     "body-parser": "~1.0.0",
     "method-override": "~1.0.0",
     "grunt": "~0.4.5",
@@ -24,8 +23,13 @@
     "grunt-serve": "^0.1.6",
     "grunt-uncss": "~0.3.5"
   },
+    "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
   "scripts": {
   "start": "node server.js"
   },
+  "private": true,
   "main": "server.js"
 }
