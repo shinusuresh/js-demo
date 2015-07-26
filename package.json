@@ -1,9 +1,9 @@
 {
-  "name": "moltin-demo",
-  "description": "Demo",
+  "name": "ThoughtStore",
+  "description": "Thought store based on Moltin for testing analytics",
   "version": "1.0.0",
   "author": {
-    "name": "Moltin Team",
+    "name": "Moltin Team. Modified by Shinu for analytics",
     "url": "https://molt.in/"
   },
   "devDependencies": {
@@ -27,5 +27,5 @@
   "scripts": {
   "start": "node server.js"
   },
-  "main": "server.js",
+  "main": "server.js"
 }
