@@ -34,6 +34,8 @@ app.factory 'Moltin', ['$rootScope', '$location', 'publicKey', ($rootScope, $loc
 	return moltin.Authenticate()
 ]
 
+#Analytics class for injection
+
 # Page actions
 app.factory 'Page', ['$rootScope', '$location', 'Moltin', 'siteName', ($rootScope, $location, Moltin, siteName) ->
 
